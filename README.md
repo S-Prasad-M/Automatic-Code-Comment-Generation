@@ -59,22 +59,15 @@ The generated comments were evaluated for readability and achieved the following
 These scores indicate that the comments are moderately easy to read and suitable for a general audience with basic programming knowledge.
 
 ## Evaluation Comparison
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|c|c|}
-        \hline
-        \textbf{Approach} & \textbf{BLEU-4 Score (\%)} \\
-        \hline
-        CODE-NN & 25.30 \\
-        Seq2Seq & 34.87 \\
-        Attention-based Seq2Seq & 35.50 \\
-        DeepCom & 38.17 \\
-        Our Method & 46.81 \\
-        \hline
-    \end{tabular}
-    \caption{Comparison of BLEU-4 Scores Across Different Models}
-    \label{tab:bleu_scores}
-\end{table}
+## Comparison of BLEU-4 Scores Across Different Models
+
+| Approach                | BLEU-4 Score (%) |
+|-------------------------|------------------|
+| CODE-NN                 | 25.30            |
+| Seq2Seq                 | 34.87            |
+| Attention-based Seq2Seq | 35.50            |
+| DeepCom                 | 38.17            |
+| Our Method              | 46.81            |
 
 
 ## Installation
