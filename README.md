@@ -18,70 +18,34 @@ The system is built using the **Transformer** architecture:
 - **Dropout and Normalization**: Improves generalization.
 
 ### Transformer Model Details:
-Transformer(
-  (enc_emb): TransformerEmbedding(
-    (embed): Embedding(445812, 256)
-    (pos_enc): PositionalEncoding()
-    (drop): Dropout(p=0.1, inplace=False)
-  )
-  (dec_emb): TransformerEmbedding(
-    (embed): Embedding(445812, 256)
-    (pos_enc): PositionalEncoding()
-    (drop): Dropout(p=0.0, inplace=False)
-  )
-  (encoder): ModuleList(
-    (0-5): 6 x EncoderBlock(
-      (mha): MultiHeadAttention(
-        (q_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (k_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (v_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (out): Linear(in_features=256, out_features=256, bias=True)
-        (drop_att): Dropout(p=0.1, inplace=False)
-        (drop_res): Dropout(p=0.1, inplace=False)
-        (ln): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
-      )
-      (ff): Sequential(
-        (0): Linear(in_features=256, out_features=1024, bias=True)
-        (1): ReLU()
-        (2): Dropout(p=0.1, inplace=False)
-        (3): Linear(in_features=1024, out_features=256, bias=True)
-        (4): Dropout(p=0.1, inplace=False)
-        (5): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
-      )
-    )
-  )
-  (decoder): ModuleList(
-    (0-5): 6 x DecoderBlock(
-      (mha1): MultiHeadAttention(
-        (q_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (k_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (v_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (out): Linear(in_features=256, out_features=256, bias=True)
-        (drop_att): Dropout(p=0.1, inplace=False)
-        (drop_res): Dropout(p=0.1, inplace=False)
-        (ln): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
-      )
-      (mha2): MultiHeadAttention(
-        (q_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (k_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (v_wgt): Linear(in_features=256, out_features=256, bias=True)
-        (out): Linear(in_features=256, out_features=256, bias=True)
-        (drop_att): Dropout(p=0.1, inplace=False)
-        (drop_res): Dropout(p=0.1, inplace=False)
-        (ln): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
-      )
-      (ff): Sequential(
-        (0): Linear(in_features=256, out_features=1024, bias=True)
-        (1): ReLU()
-        (2): Dropout(p=0.1, inplace=False)
-        (3): Linear(in_features=1024, out_features=256, bias=True)
-        (4): Dropout(p=0.1, inplace=False)
-        (5): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
-      )
-    )
-  )
-  (out): Linear(in_features=256, out_features=445812, bias=True)
-)
+* **`TransformerEmbedding`**:
+    * Embeddings for input and output tokens (`Embedding`).
+    * Positional encoding to capture sequence order (`PositionalEncoding`).
+    * Dropout for regularization (`Dropout`).
+* **`EncoderBlock`**:
+    * Multi-head attention mechanism (`MultiHeadAttention`).
+    * Feed-forward network (`Sequential`).
+    * Layer normalization (`LayerNorm`).
+* **`DecoderBlock`**:
+    * Two multi-head attention mechanisms (`MultiHeadAttention`).
+    * Feed-forward network (`Sequential`).
+    * Layer normalization (`LayerNorm`).
+* **`MultiHeadAttention`**:
+    * Linear layers for query, key, and value transformations (`Linear`).
+    * Output linear layer (`Linear`).
+    * Dropout for attention and residual connections (`Dropout`).
+    * Layer normalization (`LayerNorm`).
+* **`Feed-Forward Network (ff)`**:
+    * Two linear layers with a ReLU activation in between (`Linear`, `ReLU`).
+    * Dropout for regularization (`Dropout`).
+    * Layer normalization (`LayerNorm`).
+* **`Linear(out)`**:
+    * Final linear layer to project the decoder output to the vocabulary size.
+* **Key Parameters:**
+    * `Embedding(445812, 256)`: Vocabulary size of 445812, embedding dimension of 256.
+    * 6 Encoder and Decoder blocks.
+    * Intermediate feed forward layer size of 1024.
+    * Dropout probability of 0.1 for most dropout layers, except the decoder embedding dropout which is 0.0.
 
 
 ## Training with Separate Tokenizers
