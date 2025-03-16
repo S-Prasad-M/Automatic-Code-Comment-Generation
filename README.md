@@ -12,7 +12,7 @@ This project aims to generate natural language comments for Java methods using d
 
 ## Web-Scraped Data
 The data was scraped using the GitHub REST API and corresponding code is added in the repositary too.
-The data can be accessed through this (Data Link)[https://drive.google.com/drive/folders/19OIrEZihBfvMv8HhzR8Rldl_sEzs_OJ-]
+The data can be accessed through this [Data Link][https://drive.google.com/drive/folders/19OIrEZihBfvMv8HhzR8Rldl_sEzs_OJ-]
 
 ## Model Architecture
 The system is built using the **Transformer** architecture:
