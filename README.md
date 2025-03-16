@@ -10,6 +10,10 @@ This project aims to generate natural language comments for Java methods using d
 - **Structure-Based Traversal (SBT)**: Enhances AST representation to retain structural integrity.
 - **BLEU Score Evaluation**: Measures output quality against human-written comments.
 
+## Web-Scraped Data
+The data was scraped using the GitHub REST API and corresponding code is added in the repositary too.
+The data can be accessed through this (Data Link)[https://drive.google.com/drive/folders/19OIrEZihBfvMv8HhzR8Rldl_sEzs_OJ-]
+
 ## Model Architecture
 The system is built using the **Transformer** architecture:
 - **Embedding Layers**: Separate embeddings for code, ASTs, and comments.
